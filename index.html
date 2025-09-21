@@ -1,10 +1,10 @@
-
-<!DOCTYPE html>
+        .contact-item {
+            backgroun<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sparkle & Shine Kids Car Care</title>
+    <title>BubbleBuddies Clean</title>
     <style>
         * {
             margin: 0;
@@ -80,6 +80,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            position: relative;
         }
 
         .logo {
@@ -127,6 +128,137 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 0, 255, 0.9); /* Temporary bright background for debugging */
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            gap: 3rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mobile-menu .nav-links li {
+            text-align: center;
+        }
+
+        .mobile-menu .nav-links a {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff; /* Force white text for debugging */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3); /* Add background to make links visible */
+            border-radius: 8px;
+            border: 2px solid #00ffff;
+        }
+
+        .mobile-nav-links {
+            flex-direction: column;
+            gap: 3rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .mobile-nav-links li {
+            text-align: center;
+        }
+
+        .mobile-nav-links a {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            display: block;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .mobile-nav-links a:hover {
+            color: #00ffff !important;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            transform: scale(1.05);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .mobile-menu .nav-links a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Hamburger animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         /* Sections */
@@ -416,6 +548,124 @@
             margin: 0 auto;
         }
 
+        /* Booking section */
+        .booking {
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .booking h2 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .booking-container {
+            display: grid;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .booking-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .booking-method {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 0, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .booking-method:hover {
+            border-color: rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .booking-method h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+
+        .booking-button {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 200%;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: buttonGlow 2s infinite alternate;
+            margin: 1rem 0;
+        }
+
+        .booking-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+        }
+
+        .booking-button-secondary {
+            background: linear-gradient(45deg, #ffff00, #ff00ff);
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
+        }
+
+        .booking-button-secondary:hover {
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.5);
+        }
+
+        .service-reminder {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 0, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .service-reminder h3 {
+            color: #ffff00;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .reminder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .reminder-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #ffff00;
+        }
+
         /* Contact section */
         .contact {
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
@@ -447,22 +697,33 @@
         }
 
         .contact-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
             padding: 1.5rem;
-            border-radius: 15px;
+            border-radius: 10px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(255, 0, 255, 0.4);
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
         }
 
         /* Responsive design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 1.5rem;
             }
 
             .hero h1 {
@@ -477,12 +738,44 @@
                 padding: 4rem 1rem 2rem;
             }
 
-            .services, .about, .contact {
+            .services, .about, .contact, .booking {
                 padding: 2rem 1rem;
             }
 
-            .services h2, .about h2, .contact h2 {
+            .services h2, .about h2, .contact h2, .booking h2 {
                 font-size: 2rem;
+            }
+
+            .booking-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .reminder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .mobile-menu .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .booking-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
             }
         }
 
@@ -510,19 +803,40 @@
 
     <header>
         <nav>
-            <div class="logo">🚗✨ Sparkle & Shine</div>
+            <div class="logo">⚡ BUBBLEBUDDIES CLEAN ⚡</div>
+            
+            <!-- Desktop Navigation -->
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking">Book Now</a></li>
             </ul>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
         </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking">Book Now</a></li>
+            </ul>
+        </div>
     </header>
 
     <section id="home" class="hero">
-        <h1>Sparkle & Shine Kids Car Care!</h1>
-        <p>Making your family car sparkle like magic! ✨</p>
+        <h1>BUBBLEBUDDIES CLEAN</h1>
+        <p>Premium car detailing with electric style! ⚡</p>
         <div class="car-container">
             <div class="car">
                 <div class="sparkles">
@@ -533,7 +847,7 @@
                 </div>
             </div>
         </div>
-        <a href="#contact" class="cta-button">Book Your Sparkle Session!</a>
+        <a href="#booking" class="cta-button">POWER UP YOUR RIDE!</a>
     </section>
 
     <section id="services" class="services fade-in">
@@ -595,10 +909,112 @@
                 <p>Mon-Sat: 8am-6pm<br>Sun: 10am-4pm</p>
             </div>
         </div>
+        <a href="#booking" class="cta-button">BOOK YOUR APPOINTMENT!</a>
+    </section>
+
+    <section id="booking" class="booking fade-in">
+        <h2>Book Your Appointment</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #b0b0b0;">
+            Choose your preferred date and time for your BubbleBuddies Clean service!
+        </p>
+        
+        <!-- Google Calendar Booking Options -->
+        <div class="booking-container">
+            <div class="booking-methods">
+                <div class="booking-method">
+                    <h3>📅 Quick Book</h3>
+                    <p>Click below to open our booking calendar in a new window</p>
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2FER8KPF9nW_96S2KgF-YCK-OqZQN-OP-QBgJ5QbE2Ff9d8w_TgXqfL_mqaP8HYAGJk1s6wB2u?gv=true" 
+                       target="_blank" 
+                       class="booking-button">
+                        ⚡ Book Appointment ⚡
+                    </a>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+                        Opens in new window • No Google account required
+                    </p>
+                </div>
+                
+                <div class="booking-method">
+                    <h3>📞 Call to Book</h3>
+                    <p>Prefer to talk? Call us directly!</p>
+                    <a href="tel:5557725553" class="booking-button booking-button-secondary">
+                        📞 (555) 772-7553
+                    </a>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+                        Mon-Sat: 8am-6pm • Sun: 10am-4pm
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service Reminder -->
+        <div class="service-reminder">
+            <h3>🚗 What to Expect</h3>
+            <div class="reminder-grid">
+                <div class="reminder-item">
+                    <strong>🕐 Duration:</strong> 30min - 2 hours depending on service
+                </div>
+                <div class="reminder-item">
+                    <strong>📍 Location:</strong> We come to you! (Mobile service)
+                </div>
+                <div class="reminder-item">
+                    <strong>💧 Water:</strong> We bring everything needed
+                </div>
+                <div class="reminder-item">
+                    <strong>🎉 Kid-Friendly:</strong> Your children can watch and learn!
+                </div>
+            </div>
+        </div>
         <a href="tel:5557725553" class="cta-button" style="margin-top: 2rem;">Call Now for Magic!</a>
     </section>
 
     <script>
+        // Mobile menu functionality
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Debug: Log elements to console
+        console.log('Mobile toggle:', mobileToggle);
+        console.log('Mobile menu:', mobileMenu);
+
+        if (mobileToggle && mobileMenu) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger clicked!'); // Debug log
+                
+                mobileToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                console.log('Menu active?', mobileMenu.classList.contains('active')); // Debug log
+                
+                if (mobileMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        } else {
+            console.error('Mobile menu elements not found!');
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -636,35 +1052,41 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+                header.style.borderBottom = '1px solid rgba(0, 255, 255, 0.4)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.borderBottom = '1px solid rgba(0, 255, 255, 0.2)';
             }
         });
 
-        // Add some interactive sparkles on click
+        // Add some interactive neon sparkles on click
         document.addEventListener('click', (e) => {
-            createSparkle(e.clientX, e.clientY);
+            createNeonSparkle(e.clientX, e.clientY);
         });
 
-        function createSparkle(x, y) {
+        function createNeonSparkle(x, y) {
+            const colors = ['#00ffff', '#ff00ff', '#ffff00'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
             const sparkle = document.createElement('div');
             sparkle.style.position = 'fixed';
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
-            sparkle.style.width = '10px';
-            sparkle.style.height = '10px';
-            sparkle.style.background = '#FFD700';
+            sparkle.style.width = '6px';
+            sparkle.style.height = '6px';
+            sparkle.style.background = `radial-gradient(circle, ${color}, transparent)`;
             sparkle.style.borderRadius = '50%';
             sparkle.style.pointerEvents = 'none';
             sparkle.style.zIndex = '9999';
-            sparkle.style.animation = 'sparkle 1s ease-out forwards';
+            sparkle.style.boxShadow = `0 0 10px ${color}`;
+            sparkle.style.animation = 'neonSparkle 1.5s ease-out forwards';
             
             document.body.appendChild(sparkle);
             
             setTimeout(() => {
                 sparkle.remove();
-            }, 1000);
+            }, 1500);
         }
     </script>
 </body>
