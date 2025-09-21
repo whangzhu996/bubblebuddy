@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+        .contact-item {
+            backgroun<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -893,11 +894,11 @@
         <div class="contact-info">
             <div class="contact-item">
                 <h3>📞 Call Us</h3>
-                <p>(555) TBD <br>(555) TBD</p>
+                <p>(555) SPARKLE<br>(555) 772-7553</p>
             </div>
             <div class="contact-item">
                 <h3>📧 Email Us</h3>
-                <p>bubblebuddiescleanpa@gmail.com</p>
+                <p>hello@sparkleshine.com</p>
             </div>
             <div class="contact-item">
                 <h3>📍 We Come to You!</h3>
@@ -905,7 +906,7 @@
             </div>
             <div class="contact-item">
                 <h3>⏰ Hours</h3>
-                <p>Mon-Fri: 6pm-8pm<br>Sat/Sun: 10am-4pm</p>
+                <p>Mon-Sat: 8am-6pm<br>Sun: 10am-4pm</p>
             </div>
         </div>
         <a href="#booking" class="cta-button">BOOK YOUR APPOINTMENT!</a>
@@ -922,14 +923,28 @@
             <div class="booking-methods">
                 <div class="booking-method">
                     <h3>📅 Quick Book</h3>
-                    <p>Click below to open our booking calendar in a new window</p>
-                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2FER8KPF9nW_96S2KgF-YCK-OqZQN-OP-QBgJ5QbE2Ff9d8w_TgXqfL_mqaP8HYAGJk1s6wB2u?gv=true" 
-                       target="_blank" 
-                       class="booking-button">
-                        ⚡ Book Appointment ⚡
-                    </a>
+                    <p>Click below to schedule your appointment</p>
+                    
+                    <!-- Google Calendar Appointment Scheduling begin -->
+                    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+                    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+                    <script>
+                    (function() {
+                      var target = document.currentScript;
+                      window.addEventListener('load', function() {
+                        calendar.schedulingButton.load({
+                          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1CkmDxQLyBefdcwbeaVmh01VzzC2V0I_iU6KSD8JbITaYofYmfazSCzJ3gc-E7INs_wS3kn3x6?gv=true',
+                          color: '#00ffff',
+                          label: '⚡ Book Appointment ⚡',
+                          target,
+                        });
+                      });
+                    })();
+                    </script>
+                    <!-- end Google Calendar Appointment Scheduling -->
+                    
                     <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
-                        Opens in new window • No Google account required
+                        Powered by Google Calendar • Select date & time
                     </p>
                 </div>
                 
